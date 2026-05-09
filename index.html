@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童识字小报生成器</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 儿童识字小报生成器</h1>
+            <p class="subtitle">输入主题和标题，AI 自动生成识字小报</p>
+        </header>
+
+        <main>
+            <div class="config-bar" id="configBar">
+                <span class="config-dot" id="configDot"></span>
+                <span id="configText">检查 API 配置...</span>
+            </div>
+
+            <form id="generateForm">
+                <div class="form-group">
+                    <label for="theme">主题 / 场景</label>
+                    <div class="theme-select-row">
+                        <select id="theme" required>
+                            <option value="">请选择主题...</option>
+                        </select>
+                        <span class="or-divider">或</span>
+                        <input type="text" id="themeCustom" placeholder="自定义主题（如：太空站）">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">小报标题</label>
+                    <input type="text" id="title" placeholder="如：《走进超市》《快乐医院》" required>
+                </div>
+
+                <button type="submit" id="generateBtn">
+                    <span id="btnText">✨ 生成小报</span>
+                    <span id="btnSpinner" class="hidden">⏳ 生成中...</span>
+                </button>
+            </form>
+
+            <div id="resultArea" class="hidden">
+                <div class="result-header">
+                    <h2>生成结果</h2>
+                    <span id="taskStatus" class="status-badge">处理中</span>
+                </div>
+                <div id="imageContainer" class="hidden">
+                    <div class="image-wrapper">
+                        <img id="resultImage" alt="识字小报" />
+                    </div>
+                    <div class="image-actions">
+                        <a id="downloadLink" download="识字小报.png" class="btn-download">⬇ 下载图片</a>
+                    </div>
+                </div>
+                <div id="errorMessage" class="error-msg hidden"></div>
+                <div id="loadingDots" class="loading-indicator">
+                    <span>.</span><span>.</span><span>.</span>
+                </div>
+            </div>
+
+            <div class="prompt-preview hidden" id="promptPreview">
+                <h3>📝 生成的提示词</h3>
+                <pre id="promptText"></pre>
+            </div>
+        </main>
+    </div>
+
+    <!-- GitHub Pages 部署时如果有后端 API，取消注释并设置地址 -->
+    <!-- <script>window.API_BASE = "https://your-api.onrender.com";</script> -->
+    <script src="/static/vocabulary.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
